@@ -15,6 +15,7 @@ jobs:
         with: 
             ref: 'gh-pages'
             path: 'public'
+            
       - name: checkout items
         uses: actions/checkout@v3
         with: 
@@ -27,7 +28,7 @@ jobs:
           
       - name: setup & build
         run: |
-           cp -a ./items/. ./ee/ee/public/items/ &&
+           cp -a ./items/items/. ./ee/ee/public/items/ &&
            npm install --prefix ./ee/ee 
         
       - name: copy  
