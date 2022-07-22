@@ -1,12 +1,17 @@
 name: fastib2pci
-on: [push]
+on:
+  push:
+    branches:
+      - main
 jobs:
   check-bats-version:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with: 
+            repository: 'DIPFtba/ee4pci.git'
       - uses: actions/setup-node@v3
         with:
-          node-version: '14'
-      - run: npm install -g bats
-      - run: bats -v
+          node-version: '16.10.0'
+      - run: npm install
+      
