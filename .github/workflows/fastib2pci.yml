@@ -1,6 +1,6 @@
 name: fastib2pci
 on:
-  push:
+  gollum:
     branches:
       - main
 jobs:
