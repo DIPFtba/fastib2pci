@@ -28,7 +28,7 @@ jobs:
           
       - name: setup & build
         run: |
-           rm ./ee/ee/public/items/*
+           rm -r ./ee/ee/public/items/*
            cp -a ./items/items/. ./ee/ee/public/items/ &&
            echo `ls ./ee/ee/public/items/` && echo `ls ./items/items/` 
            npm install --prefix ./ee/ee 
