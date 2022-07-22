@@ -22,10 +22,12 @@ jobs:
         with: 
             path: 'items'       
             
-      - name: setup
+      - name: install nodejs
         uses: actions/setup-node@v3
         with:
           node-version: '16.10.0'
+          
+      - name: setup & build
         run: cp -a ./items/. ./ee/ee/public/items/ \
              npm install --prefix ./ee/ee 
         
