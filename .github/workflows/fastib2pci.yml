@@ -1,6 +1,6 @@
 name: fastib2pci
 on:
-  gollum:
+  fork:
     branches:
       - main
 jobs:
