@@ -4,14 +4,42 @@ on:
     branches:
       - main
 jobs:
-  check-bats-version:
+  deploy items:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: checkout ee
+        uses: actions/checkout@v3
         with: 
             repository: 'DIPFtba/ee4pci.git'
-      - uses: actions/setup-node@v3
+            path: 'ee'
+      - name: checkout pages
+        uses: actions/checkout@v3
+        with: 
+            ref: 'gh-pages'
+            path: 'public'
+      - name: checkout items
+        uses: actions/checkout@v3
+        with: 
+            path: 'items'       
+            
+      - name: setup
+        uses: actions/setup-node@v3
         with:
           node-version: '16.10.0'
-      - run: npm install
+        run: cp -a ./items/. ./ee/ee/public/items/
+        working-directory: ./ee/ee
+        run: npm install
+        
+      - name: copy  
+        working-directory: ${{ GITHUB_WORKSPACE }}
+        run: cp -a ./ee/ee/build/. ./public/docs
+        
+      - name: commit
+        working-directory: ./public
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "[Bot] update delivery"
+          commit_user_name: bot
+          commit_user_email: wagnerf@dipf.de   
+        
       
