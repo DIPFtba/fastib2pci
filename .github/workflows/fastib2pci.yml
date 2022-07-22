@@ -1,6 +1,6 @@
 name: fastib2pci
 on:
-  fork:
+  push:
     branches:
       - main
 jobs:
@@ -32,6 +32,8 @@ jobs:
            cp -a ./items/items/. ./ee/ee/public/items/ &&
            echo `ls ./ee/ee/public/items/` && echo `ls ./items/items/` &&
            npm install --prefix ./ee/ee &&
+           export REPONAME="${GITHUB_REPOSITORY#*/}" &&
+           sed -i 's@/ee4pci/@/'"$REPONAME"'/@' ./ee/ee/package.json
            cd ee/ee && npm run build
         
       - name: copy  
