@@ -35,7 +35,7 @@ jobs:
         
       - name: copy  
         run: cp -a ./ee/ee/build/. ./public/docs/ &&
-             echo `ls ./ee/ee/build` && echo `ls ./public/docs`
+             echo `ls ./ee/ee/build` && echo `ls ./public/docs/items`
         
       - name: Deploy
         uses: s0/git-publish-subdir-action@develop
