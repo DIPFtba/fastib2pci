@@ -1,6 +1,8 @@
 name: fastib2pci
 on:
-  push
+  push:
+    branches:
+      - main  
 jobs:
   fetch:
     runs-on: ubuntu-latest
