@@ -32,7 +32,6 @@ jobs:
              npm install --prefix ./ee/ee 
         
       - name: copy  
-        working-directory: ${{ GITHUB_WORKSPACE }}
         run: cp -a ./ee/ee/build/. ./public/docs
         
       - name: commit
