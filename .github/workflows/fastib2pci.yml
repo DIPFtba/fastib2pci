@@ -4,15 +4,12 @@ on:
     branches:
       - main
 jobs:
-  deploy_items:
+  fetch:
     runs-on: ubuntu-latest
     steps:
       - name: checkout ee
-        uses: actions/checkout@v3
-        with: 
-            repository: 'DIPFtba/ee4pci.git'
-            path: 'ee'
-            ref: 'main'
+        run: git clone https://github.com/DIPFtba/ee4pci.git ee
+        
       - name: checkout pages
         uses: actions/checkout@v3
         with: 
