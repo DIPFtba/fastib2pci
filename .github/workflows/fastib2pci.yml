@@ -26,7 +26,8 @@ jobs:
           node-version: '16.10.0'
           
       - name: setup & build
-        run: cp -a ./items/. ./ee/ee/public/items/ \
+        run: |
+             cp -a ./items/. ./ee/ee/public/items/
              npm install --prefix ./ee/ee 
         
       - name: copy  
