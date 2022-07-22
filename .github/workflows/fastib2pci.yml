@@ -26,9 +26,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '16.10.0'
-        run: cp -a ./items/. ./ee/ee/public/items/
-        working-directory: ./ee/ee
-        run: npm install
+        run: cp -a ./items/. ./ee/ee/public/items/ \
+             npm install --prefix ./ee/ee 
         
       - name: copy  
         working-directory: ${{ GITHUB_WORKSPACE }}
