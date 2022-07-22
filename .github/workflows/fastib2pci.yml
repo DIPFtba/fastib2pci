@@ -34,12 +34,12 @@ jobs:
       - name: copy  
         run: cp -a ./ee/ee/build/. ./public/docs
         
-      - name: commit
-        working-directory: ./public
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: "[Bot] update delivery"
-          commit_user_name: bot
-          commit_user_email: wagnerf@dipf.de   
+      -  name: Deploy
+         uses: s0/git-publish-subdir-action@develop
+         env:
+            REPO: self
+            BRANCH: gh-pages
+            FOLDER: public
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
       
