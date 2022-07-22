@@ -29,14 +29,16 @@ jobs:
       - name: setup & build
         run: |
            cp -a ./items/items/. ./ee/ee/public/items/ &&
+           echo `ls -lat ./ee/ee/public/items/` && echo `ls -lat ./items/items/` 
            npm install --prefix ./ee/ee 
         
       - name: copy  
-        run: cp -a ./ee/ee/build/. ./public/docs
+        run: cp -a ./ee/ee/build/. ./public/docs &&
+             echo `ls -lat ./ee/ee/build/` && echo `ls -lat ./public/docs`
         
-      -  name: Deploy
-         uses: s0/git-publish-subdir-action@develop
-         env:
+      - name: Deploy
+        uses: s0/git-publish-subdir-action@develop
+        env:
             REPO: self
             BRANCH: gh-pages
             FOLDER: public
