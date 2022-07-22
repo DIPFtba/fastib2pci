@@ -1,0 +1,10 @@
+name: fastib2pci
+on:
+  gollum
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:  
+      - run: |
+          echo "${{ github.repository }}" &&
+          echo "${{ GITHUB_REPOSITORY }}
