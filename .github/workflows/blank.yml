@@ -8,5 +8,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:  
       - run: |
-          echo "${{ github.repository }}" &&
-          echo "${{ GITHUB_REPOSITORY }}
+          echo "$GITHUB_REPOSITORY"
