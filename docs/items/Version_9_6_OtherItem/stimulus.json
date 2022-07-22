@@ -1,0 +1,11 @@
+{
+  "runtimeCompatibilityVersion" : "9.6.0",
+  "itemName" : "Version_9_6_OtherItem",
+  "itemWidth" : 300,
+  "itemHeight" : 300,
+  "tasks" : [ "FirstTask" ],
+  "resources" : [ ],
+  "externalResources" : [ ],
+  "dependencies" : [ ],
+  "variables" : [ ]
+}

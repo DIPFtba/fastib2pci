@@ -1,0 +1,14 @@
+{
+  "runtimeCompatibilityVersion" : "9.7.0",
+  "itemName" : "Simple",
+  "itemWidth" : 600,
+  "itemHeight" : 600,
+  "tasks" : [ "FirstTask" ],
+  "resources" : [ ],
+  "externalResources" : [ ],
+  "dependencies" : [ ],
+  "variables" : [ {
+    "name" : "VarA",
+    "type" : "integer"
+  } ]
+}
