@@ -32,7 +32,7 @@ jobs:
            cp -a ./items/items/. ./ee/ee/public/items/ &&
            echo `ls ./ee/ee/public/items/` && echo `ls ./items/items/` &&
            npm install --prefix ./ee/ee &&
-           cd ee && npm run build
+           cd ee/ee && npm run build
         
       - name: copy  
         run: cp -a ./ee/ee/build/. ./public/docs/ &&
