@@ -27,8 +27,8 @@ jobs:
           
       - name: setup & build
         run: |
-             cp -a ./items/. ./ee/ee/public/items/
-             npm install --prefix ./ee/ee 
+           cp -a ./items/. ./ee/ee/public/items/
+           npm install --prefix ./ee/ee 
         
       - name: copy  
         run: cp -a ./ee/ee/build/. ./public/docs
