@@ -1,14 +1,17 @@
 {
   "runtimeCompatibilityVersion" : "9.7.0",
-  "itemName" : "Simple",
+  "itemName" : "StatemachineJeTask",
   "itemWidth" : 600,
   "itemHeight" : 600,
-  "tasks" : [ "FirstTask" ],
+  "tasks" : [ "FirstTask", "SecondTask", "ThirdTask", "FourthTask", "FifthTask" ],
   "resources" : [ ],
   "externalResources" : [ ],
   "dependencies" : [ ],
   "variables" : [ {
-    "name" : "VarA",
+    "name" : "ActiveState",
+    "type" : "integer"
+  }, {
+    "name" : "VariableX",
     "type" : "integer"
   } ]
 }

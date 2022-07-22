@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/ee4pci/static/css/main.8e35ff7e.chunk.css",
-    "main.js": "/ee4pci/static/js/main.9a1ae409.chunk.js",
-    "main.js.map": "/ee4pci/static/js/main.9a1ae409.chunk.js.map",
+    "main.css": "/ee4pci/static/css/main.4b491453.chunk.css",
+    "main.js": "/ee4pci/static/js/main.9bf879cd.chunk.js",
+    "main.js.map": "/ee4pci/static/js/main.9bf879cd.chunk.js.map",
     "runtime-main.js": "/ee4pci/static/js/runtime-main.14a49d7b.js",
     "runtime-main.js.map": "/ee4pci/static/js/runtime-main.14a49d7b.js.map",
     "static/js/2.c76b525c.chunk.js": "/ee4pci/static/js/2.c76b525c.chunk.js",
     "static/js/2.c76b525c.chunk.js.map": "/ee4pci/static/js/2.c76b525c.chunk.js.map",
     "index.html": "/ee4pci/index.html",
-    "static/css/main.8e35ff7e.chunk.css.map": "/ee4pci/static/css/main.8e35ff7e.chunk.css.map",
+    "static/css/main.4b491453.chunk.css.map": "/ee4pci/static/css/main.4b491453.chunk.css.map",
     "static/js/2.c76b525c.chunk.js.LICENSE.txt": "/ee4pci/static/js/2.c76b525c.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.14a49d7b.js",
     "static/js/2.c76b525c.chunk.js",
-    "static/css/main.8e35ff7e.chunk.css",
-    "static/js/main.9a1ae409.chunk.js"
+    "static/css/main.4b491453.chunk.css",
+    "static/js/main.9bf879cd.chunk.js"
   ]
 }
