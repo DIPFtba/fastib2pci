@@ -1,6 +1,6 @@
 name: fastib2pci
 on:
-  gollum
+  push
 jobs:
   fetch:
     runs-on: ubuntu-latest
