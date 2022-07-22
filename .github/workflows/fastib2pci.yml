@@ -12,6 +12,7 @@ jobs:
         with: 
             repository: 'DIPFtba/ee4pci.git'
             path: 'ee'
+            ref: 'main'
       - name: checkout pages
         uses: actions/checkout@v3
         with: 
