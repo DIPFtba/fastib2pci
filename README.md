@@ -1,6 +1,6 @@
 # Welcome to `fastib2pci`
 
-Easy-to-use packaging of CBA ItemBuilder items for computer-based assessments as portable custom interactions (PCI) that can be used in various assessment platforms (e.g., in [TAO](https://www.taotesting.com/)). 
+Easy-to-use packaging of [CBA ItemBuilder](https://tba.dipf.de/en/infrastructure/software-development/cba-itembuilder-1) items for computer-based assessments as [Portable Custom Interactions (PCI)](https://www.imsglobal.org/assessment/interactions.html) that can be used in various assessment platforms (e.g., in [TAO](https://www.taotesting.com/)). 
 
 ![](docs/diagram.png)
 
@@ -24,3 +24,7 @@ If multipe CBA ItemBuilder projects are provided in the `items/` directory, rena
 
 - **Q:** Are the data secure, and access restricted when using `fastib2pci`? **A:** Yes! For both approaches (using the generic or the specific PCI component), data will be stored within the assessment platform in which the PCI components are embedded. 
  
+- **Q:** Do I have to rename the CBA ItemBuilder projects in the CBA ItemBuilder with `Rename Project`, or is it sufficient to name the files in the Explorer / Finder so that the alphabetical order is correct? **A:**  It is enough to rename the project files. The names of the CBA ItemBuilder projects can remain unchanged. 
+- **Q:** The `items/` directory already contains files. What do I do? **A:** The sample files are included so that you can see how it works using an example of the [Static Page](https://dipftba.github.io/fastib2pci/). The example data must be deleted, so that these do not come with in the PCI created with `fastib2pci`. 
+
+- **Q:** How performant is the hosting of `fastib2pci`, i.e. how many students can work on the tasks simultaneously?  **A:** The goal of `fastib2pci` is to illustrate how CBA ItemBuilder content can be statically hosted for a generic PCI component. The performance of the GitHub static pages is only one example. If more concurrent testing is required and supported by the assessment platform into which the PCI components are integrated, the content from the `docs\` directory of the `gh-pages` branch can also be used for hosting via a CDN. 
