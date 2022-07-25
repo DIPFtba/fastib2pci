@@ -8,11 +8,11 @@ Easy-to-use packaging of [CBA ItemBuilder](https://tba.dipf.de/en/infrastructure
 
 # Usage
 
-1. To use the converter and `fastib2pci` first fork this repository. 
+1. To use the converter and `fastib2pci` first fork this repository. To fork a repository, select the entry `+ Create a new fork` in the upper right corner of this page. 
 
-2. Then create a new repository in your GitHub account and use this project as template.
+2. Then create a new public or private repository in your GitHub account and use this project as template. If your repository is private, the content will be secure until the project name becomes public or known by your test-takers. 
 
-3. Copy the CBA ItemBuilder projects you want to use into the `items/` directory of the repository. 
+3. Copy the CBA ItemBuilder projects you want to use into the `items/` directory of the new repository. 
 
 4. Commit the items to your repository. After that, the Github action processes the content of your items and makes it available for use in a generic PCI component. In parallel, a specific PCI component is also created, which also contains the content of the items, and can be used without additional hosting. 
 
@@ -25,6 +25,14 @@ If multipe CBA ItemBuilder projects are provided in the `items/` directory, rena
 - **Q:** Are the data secure, and access restricted when using `fastib2pci`? **A:** Yes! For both approaches (using the generic or the specific PCI component), data will be stored within the assessment platform in which the PCI components are embedded. 
  
 - **Q:** Do I have to rename the CBA ItemBuilder projects in the CBA ItemBuilder with `Rename Project`, or is it sufficient to name the files in the Explorer / Finder so that the alphabetical order is correct? **A:**  It is enough to rename the project files. The names of the CBA ItemBuilder projects can remain unchanged. 
-- **Q:** The `items/` directory already contains files. What do I do? **A:** The sample files are included so that you can see how it works using an example of the [Static Page](https://dipftba.github.io/fastib2pci/). The example data must be deleted, so that these do not come with in the PCI created with `fastib2pci`. 
+- **Q:** The `items/` directory already contains files. What do I do? **A:** The sample files are included so that you can see how it works using an example of the [Static Page](https://dipftba.github.io/fastib2pci/). The example CBA ItemBuilder project must be deleted and replaced with your CBA ItemBuilder files, so that these will not be included into the PCI's created with `fastib2pci`. 
 
 - **Q:** How performant is the hosting of `fastib2pci`, i.e. how many students can work on the tasks simultaneously?  **A:** The goal of `fastib2pci` is to illustrate how CBA ItemBuilder content can be statically hosted for a generic PCI component. The performance of the GitHub static pages is only one example. If more concurrent testing is required and supported by the assessment platform into which the PCI components are integrated, the content from the `docs\` directory of the `gh-pages` branch can also be used for hosting via a CDN. 
+
+- **Q:** Which CBA ItemBuilder versions are supported by `fastib2pci`? **A:** The GitHub worker of `fastib2pci` uses [ee4pci](https://github.com/DIPFtba/ee4pci), a simple execution environment for CBA ItemBuilder projects which passes the data to the generic or specific PCI component. The CBA ItemBuilder version supported by [ee4pci](https://github.com/DIPFtba/ee4pci) (newer than 9.6) can also be used by `fastib2pci`. 
+
+- **Q:** Where can I find the static content provided by `fastib2pci` for the generic PCI? **A:** The contents can be found in the `gh-pages` branch in the `docs\` directory. 
+
+- **Q:** Where will the data be stored when I use the PCI components created with `fastib2pci`? **A:** No data is stored in the static page. If the content is integrated into an assessment platform (such as TAO) via the generic or specific PCI component, then the data is stored within the assessment platform (e.g. in TAO). 
+
+- **Q:** How big (pixel width and height) must the CBA ItemBuilder items be created to use them as PIC components with the help of `fastib2pci`? **A:** The embedding of the CBA ItemBuilder item can be configured in the PCI component. If less space is available than needed, the items will be, for instance, scaled-down proportionally if configured. 
