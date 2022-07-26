@@ -2,15 +2,15 @@
 
 Easy-to-use packaging of [CBA ItemBuilder](https://tba.dipf.de/en/infrastructure/software-development/cba-itembuilder-1) items for computer-based assessments as [Portable Custom Interactions (PCI)](https://www.imsglobal.org/assessment/interactions.html) that can be used in various assessment platforms (e.g., in [TAO](https://www.taotesting.com/)). 
 
-![](docs/diagram.png)
+![](READMEimage.png)
 
 `fastib2pci` uses [GitHub Actions](https://github.com/features/actions) to simplify the process of creating PCI components based on tasks developed as CBA ItemBuidler items. `fastib2pci` can be used to create static deployments for a generic portable custom interaction (PCI) using [Static GitHub Pages](https://pages.github.com/) to host the assessment content. The static content can also be hosted in other (secure) environments. `fastib2pci` also creates a specific PCI component (containing the assessment content) that does not require any hosting outside the assessment platform that uses the PCI component.
 
 # Usage
 
-1. To use the `fastib2pci` create a new public or private GithHub repository using `fastib2pci` as template and give the project a name. This will be your repository that uses the [GitHub Actions](https://github.com/features/actions) provided by `fastib2pci` to generate your PCI components. To create a new project  **[click here](https://github.com/DIPFtba/fastib2pci/generate)**.
+1. To use the `fastib2pci` create a new GithHub repository using `fastib2pci` as template. This will be your repository that uses the [GitHub Actions](https://github.com/features/actions) provided by `fastib2pci` to generate your PCI components. To create a new project based on `fastib2pci` **[click here](https://github.com/DIPFtba/fastib2pci/generate)**, give your repository a name and select if the repository should be private or public. Make sure you select **Include all branches**.
 
-2. Copy the CBA ItemBuilder projects you want to use into the `items/` directory of the new repository and commit and push the items to your repository. After that, the the [GitHub Actions](https://github.com/features/actions) will processes the content of your items and makes it available for use in a generic PCI component. In parallel, a specific PCI component is also created, which also contains the content of the items, and can be used without additional hosting. 
+2. Clone the reopository and copy the CBA ItemBuilder projects you want to use into the `items/`-directory of the new repository. Commit and push the items as zip archives to your repository. After that, the the [GitHub Actions](https://github.com/features/actions) will processes the content of your items and makes it available for use in a generic PCI component. In parallel, a specific PCI component is also created, which also contains the content of the items, and can be used without additional hosting. 
 
 3. Download either the generic PCI component or the specific PCI component and embedd the PCI component into your assessment system (e.g., [TAO](https://www.taotesting.com/)). If you use the generic PCI component, configure the PCI by providing the URL to the [Static GitHub Pages](https://pages.github.com/) provided by your fork of this repository. 
 
