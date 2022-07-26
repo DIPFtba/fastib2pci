@@ -4,19 +4,17 @@ Easy-to-use packaging of [CBA ItemBuilder](https://tba.dipf.de/en/infrastructure
 
 ![](docs/diagram.png)
 
-`fastib2pci` uses [GitHub Actions](https://github.com/features/actions) to simplify the process of creating PCI components based on tasks developed as CBA ItemBuidler items. `fastib2pci` can be used to create static deployments for a generic portable custom interaction (PCI) using [GitHub Pages](https://pages.github.com/) to host the assessment content. The static content can also be hosted in other (secure) environments. `fastib2pci` also creates a specific PCI component (containing the assessment content) that does not require any hosting outside the assessment platform that uses the PCI component.
+`fastib2pci` uses [GitHub Actions](https://github.com/features/actions) to simplify the process of creating PCI components based on tasks developed as CBA ItemBuidler items. `fastib2pci` can be used to create static deployments for a generic portable custom interaction (PCI) using [Static GitHub Pages](https://pages.github.com/) to host the assessment content. The static content can also be hosted in other (secure) environments. `fastib2pci` also creates a specific PCI component (containing the assessment content) that does not require any hosting outside the assessment platform that uses the PCI component.
 
 # Usage
 
-1. To use the converter and `fastib2pci` first fork this repository. To fork a repository, select the entry `+ Create a new fork` in the upper right corner of this page. 
+1. To use the `fastib2pci` create a new public or private GithHub repository using `fastib2pci` as template and give the project a name. This will be your repository that uses the [GitHub Actions](https://github.com/features/actions) provided by `fastib2pci` to generate your PCI components. To create a new project  **[click here](https://github.com/DIPFtba/fastib2pci/generate)**.
 
-2. Then create a new public or private repository in your GitHub account and use this project as template. If your repository is private, the content will be secure until the project name becomes public or known by your test-takers. 
+2. Copy the CBA ItemBuilder projects you want to use into the `items/` directory of the new repository and commit and push the items to your repository. After that, the the [GitHub Actions](https://github.com/features/actions) will processes the content of your items and makes it available for use in a generic PCI component. In parallel, a specific PCI component is also created, which also contains the content of the items, and can be used without additional hosting. 
 
-3. Copy the CBA ItemBuilder projects you want to use into the `items/` directory of the new repository. 
+3. Download either the generic PCI component or the specific PCI component and embedd the PCI component into your assessment system (e.g., [TAO](https://www.taotesting.com/)). If you use the generic PCI component, configure the PCI by providing the URL to the [Static GitHub Pages](https://pages.github.com/) provided by your fork of this repository. 
 
-4. Commit the items to your repository. After that, the Github action processes the content of your items and makes it available for use in a generic PCI component. In parallel, a specific PCI component is also created, which also contains the content of the items, and can be used without additional hosting. 
-
-If multipe CBA ItemBuilder projects are provided in the `items/` directory, rename the ZIP archives to make sure that the order of the files names corresponds to required order of tasks in the test. If a particular item contains multiple tasks, all tasks will be used (as defined within the CBA ItemBuilder). 
+If multipe CBA ItemBuilder projects are provided in the `items/` directory, rename the ZIP archives to make sure that the order of the files names corresponds to required order of tasks in the test. If a particular item contains multiple tasks, all tasks will be used (as defined within the CBA ItemBuilder). If your repository is private, the content will be secure until the project name becomes public or known by your test-takers. 
 
 # FAQ
 
