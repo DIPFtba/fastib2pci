@@ -37,8 +37,9 @@ jobs:
            cd ee/ee && npm run build
         
       - name: copy  
-        run: cp -a ./ee/ee/build/. ./public/docs/ &&
-             echo `ls ./ee/ee/build/items` && echo `ls ./public/docs/items`
+        run: rm -r ./public/* &&
+             cp -a ./ee/ee/build/. ./public/ &&
+             echo `ls ./ee/ee/build/items` && echo `ls ./public/items`
         
       - name: Deploy
         uses: s0/git-publish-subdir-action@develop
