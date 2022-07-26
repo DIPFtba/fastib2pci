@@ -8,7 +8,9 @@ Easy-to-use packaging of [CBA ItemBuilder](https://tba.dipf.de/en/infrastructure
 
 # Usage
 
-1. To use the this PCI converter create a new GithHub repository using `fastib2pci` as template. This will be your repository that uses the [GitHub Actions](https://github.com/features/actions) provided by `fastib2pci` to generate your PCI components. To create a new project based on `fastib2pci` **[click here](https://github.com/DIPFtba/fastib2pci/generate)**, give your repository a name and select if the repository should be private or public. Make sure you select **Include all branches**.
+You will need a [GitHub Account](https://github.com/signup) to use this converter. 
+
+1. To package CBA ItemBuilder items using the PCI converter create a new GithHub repository using `fastib2pci` as template. This will be your repository that uses the [GitHub Actions](https://github.com/features/actions) provided by `fastib2pci` to generate your PCI components. To create a new project based on `fastib2pci`, click **[here](https://github.com/DIPFtba/fastib2pci/generate)** or the button "Use this template", give your repository a name, and decide if the repository should be private or public. Make sure you select **Include all branches**.
 
 2. Add the CBA ItemBuilder zip archives you want to use into the `items/`-directory of the new repository. After that, the the [GitHub Actions](https://github.com/features/actions) will processes the content of your items and makes it available for use in a generic PCI component. In parallel, a specific PCI component is also created, which also contains the content of the items, and can be used without additional hosting. To add CBA ItemBuilder projects you can either upload the files directly using the web interface or clone the git repository, add the files and commit and push the changes. 
 
