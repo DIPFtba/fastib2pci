@@ -7,40 +7,44 @@ jobs:
   fetch:
     runs-on: ubuntu-latest
     steps:
+      - name: install nodejs
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.10.0'
       - name: checkout ee
         run: git clone https://github.com/DIPFtba/ee4pci.git ./ee
-        
       - name: checkout pages
         uses: actions/checkout@v3
         with: 
             ref: 'gh-pages'
             path: 'public'
-            
       - name: checkout items
         uses: actions/checkout@v3
         with: 
-            path: 'items'       
-            
-      - name: install nodejs
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16.10.0'
-          
-      - name: setup & build
+            path: 'items'
+      - name: checkout pci
+        run: git clone https://gitlab.tba-hosting.de/fwagner/oat-ibtaoconnector.git ./pci			
+      - name: setup & build ee
         run: |
            rm -r ./ee/ee/public/items/*
-           cp -a ./items/items/. ./ee/ee/public/items/ &&
-           echo `ls ./ee/ee/public/items/` && echo `ls ./items/items/` &&
-           npm install --prefix ./ee/ee &&
-           export REPONAME="${GITHUB_REPOSITORY#*/}" &&
+           cp -a ./items/items/. ./ee/ee/public/items/
+           echo `ls ./ee/ee/public/items/` && echo `ls ./items/items/`
+           npm install --prefix ./ee/ee
+           export REPONAME="${GITHUB_REPOSITORY#*/}"
            sed -i 's@/ee4pci/@/'"$REPONAME"'/@' ./ee/ee/package.json
            cd ee/ee && npm run build
-        
-      - name: copy  
+      - name: copy build
         run: rm -r ./public/* &&
              cp -a ./ee/ee/build/. ./public/ &&
              echo `ls ./ee/ee/build/items` && echo `ls ./public/items`
-        
+      - name: build pci
+        run: |
+           export REPONAME="${GITHUB_REPOSITORY#*/}"
+           cd ./pci/scripts/packer
+           npm i           
+           echo "https://$GITHUB_REPOSITORY_OWNER.github.io/$REPONAME"
+           node ./index.js -u "https://$GITHUB_REPOSITORY_OWNER.github.io/$REPONAME" -i "$GITHUB_WORKSPACE/items/items" -o "$GITHUB_WORKSPACE/public"
+           cat ../../views/js/pciCreator/ibTaoConnector/confDefault.json		   
       - name: Deploy
         uses: s0/git-publish-subdir-action@develop
         env:
