@@ -43,14 +43,20 @@ jobs:
            cd ./pci/scripts/packer
            npm i           
            echo "https://$GITHUB_REPOSITORY_OWNER.github.io/$REPONAME"
-           node ./index.js -u "https://$GITHUB_REPOSITORY_OWNER.github.io/$REPONAME" -i "$GITHUB_WORKSPACE/items/items" -o "$GITHUB_WORKSPACE/public"
-           cat ../../views/js/pciCreator/ibTaoConnector/confDefault.json		   
-      - name: Deploy
+           node ./index.js -u "https://$GITHUB_REPOSITORY_OWNER.github.io/$REPONAME" -i "$GITHUB_WORKSPACE/items/items" -o "$GITHUB_WORKSPACE"
+           cat ../../views/js/pciCreator/ibTaoConnector/confDefault.json
+      - name: release pci package
+        uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "latest"
+          prerelease: false
+          title: "pci release"
+          files: ${{github.workspace}}/ibTaoConnector.zip
+      - name: Deploy EE to gh-pages
         uses: s0/git-publish-subdir-action@develop
         env:
             REPO: self
             BRANCH: gh-pages
             FOLDER: public
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        
-      
