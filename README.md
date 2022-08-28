@@ -31,7 +31,7 @@ If multipe CBA ItemBuilder projects are provided in the `items/` directory, rena
 
 - **Q:** Which CBA ItemBuilder versions are supported by `fastib2pci`? **A:** The GitHub worker of `fastib2pci` uses [ee4pci](https://github.com/DIPFtba/ee4pci), a simple execution environment for CBA ItemBuilder projects which passes the data to the generic or specific PCI component. The CBA ItemBuilder version supported by [ee4pci](https://github.com/DIPFtba/ee4pci) (newer than 9.6) can also be used by `fastib2pci`. 
 
-- **Q:** Where can I find the static content provided by `fastib2pci` for the generic PCI? **A:** The contents can be found in the `gh-pages` branch in the `docs\` directory. 
+- **Q:** Where can I find the static content provided by `fastib2pci` for the generic PCI? **A:** The contents can be found in the `gh-pages` branch. 
 
 - **Q:** Where will the data be stored when I use the PCI components created with `fastib2pci`? **A:** No data is stored in the static page. If the content is integrated into an assessment platform (such as TAO) via the generic or specific PCI component, then the data is stored within the assessment platform (e.g. in TAO). 
 
