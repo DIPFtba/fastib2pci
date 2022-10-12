@@ -23,7 +23,7 @@ jobs:
         with: 
             path: 'items'
       - name: checkout pci
-        run: git clone https://gitlab.tba-hosting.de/fwagner/oat-ibtaoconnector.git ./pci			
+        run: git clone https://github.com/DIPFtba/ibTaoPciRemote.git ./pci			
       - name: setup & build ee
         run: |
            rm -r ./ee/ee/public/items/*
