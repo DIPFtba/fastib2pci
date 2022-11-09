@@ -4,7 +4,7 @@ on:
     branches:
       - main
 jobs:
-  fetch:
+  remote_pci:
     runs-on: ubuntu-latest
     steps:
       - name: install nodejs
@@ -51,7 +51,7 @@ jobs:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           automatic_release_tag: "latest"
           prerelease: false
-          title: "pci release"
+          title: "pci release (remote)"
           files: ${{github.workspace}}/ibTaoConnector.zip
       - name: Deploy EE to gh-pages
         uses: s0/git-publish-subdir-action@develop
@@ -60,3 +60,46 @@ jobs:
             BRANCH: gh-pages
             FOLDER: public
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            
+  embedded_pci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: install nodejs
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.10.0'
+      - name: checkout ee
+        run: git clone https://github.com/DIPFtba/ee4pci.git ./ee
+      - name: checkout items
+        uses: actions/checkout@v3
+        with: 
+            path: 'items'
+      - name: checkout pci
+        run: git clone https://github.com/quark-s/oat-ibtaoembedded.git ./pci			
+      - name: setup & build ee
+        run: |
+           rm -r ./ee/ee/public/items/*
+           cp -a ./items/items/. ./ee/ee/public/items/
+           echo `ls ./ee/ee/public/items/` && echo `ls ./items/items/`
+           npm install --prefix ./ee/ee
+           export REPONAME="${GITHUB_REPOSITORY#*/}"
+           sed -i 's@/ee4pci/@./@' ./ee/ee/package.json
+           cd ee/ee && npm run build
+      - name: copy ee build to pci assets
+        run: cp -a ./ee/ee/build/. ./pci/views/js/pciCreator/ibTaoEmbedded/runtime/assets/ee          
+      - name: build pci
+        run: |
+           export REPONAME="${GITHUB_REPOSITORY#*/}"
+           cd ./pci/scripts/packer
+           npm i           
+           echo "https://$GITHUB_REPOSITORY_OWNER.github.io/$REPONAME"
+           node ./index.js -i "$GITHUB_WORKSPACE/items/items" -o "$GITHUB_WORKSPACE"
+           cat ../../views/js/pciCreator/ibTaoConnector/confDefault.json
+      - name: release pci package
+        uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "latest"
+          prerelease: false
+          title: "pci release (embedded)"
+          files: ${{github.workspace}}/ibTaoEmbedded.zip 
