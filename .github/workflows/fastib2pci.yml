@@ -46,13 +46,12 @@ jobs:
            node ./index.js -u "https://$GITHUB_REPOSITORY_OWNER.github.io/$REPONAME" -i "$GITHUB_WORKSPACE/items/items" -o "$GITHUB_WORKSPACE"
            cat ../../views/js/pciCreator/ibTaoConnector/confDefault.json
       - name: release pci package 1
-        uses: "marvinpinto/action-automatic-releases@latest"
+        uses: ncipollo/release-action@v1
         with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "latest"
-          prerelease: false
-          title: "pci release (remote)"
-          files: ${{github.workspace}}/ibTaoConnector.zip
+          artifacts: ${{github.workspace}}/ibTaoConnector.zip
+          replacesArtifacts: false
+          token: "${{ secrets.GITHUB_TOKEN }}"
+          allowUpdates: true
       - name: Deploy EE to gh-pages
         uses: s0/git-publish-subdir-action@develop
         env:
@@ -97,10 +96,9 @@ jobs:
            echo "https://$GITHUB_REPOSITORY_OWNER.github.io/$REPONAME"
            node ./index.js -i "$GITHUB_WORKSPACE/items/items" -o "$GITHUB_WORKSPACE"
       - name: release pci package 2
-        uses: "marvinpinto/action-automatic-releases@latest"
+        uses: ncipollo/release-action@v1
         with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "latest"
-          prerelease: false
-          title: "pci release (embedded)"
-          files: ${{github.workspace}}/ibTaoEmbedded.zip 
+          artifacts: ${{github.workspace}}/ibTaoEmbedded.zip
+          replacesArtifacts: false
+          token: "${{ secrets.GITHUB_TOKEN }}"
+          allowUpdates: true
