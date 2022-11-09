@@ -45,7 +45,7 @@ jobs:
            echo "https://$GITHUB_REPOSITORY_OWNER.github.io/$REPONAME"
            node ./index.js -u "https://$GITHUB_REPOSITORY_OWNER.github.io/$REPONAME" -i "$GITHUB_WORKSPACE/items/items" -o "$GITHUB_WORKSPACE"
            cat ../../views/js/pciCreator/ibTaoConnector/confDefault.json
-      - name: release pci package
+      - name: release pci package 1
         uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
@@ -96,8 +96,7 @@ jobs:
            npm i           
            echo "https://$GITHUB_REPOSITORY_OWNER.github.io/$REPONAME"
            node ./index.js -i "$GITHUB_WORKSPACE/items/items" -o "$GITHUB_WORKSPACE"
-           cat ../../views/js/pciCreator/ibTaoConnector/confDefault.json
-      - name: release pci package
+      - name: release pci package 2
         uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
