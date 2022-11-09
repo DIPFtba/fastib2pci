@@ -87,7 +87,7 @@ jobs:
            cd ee/ee && npm run build
       - name: copy ee build to pci assets
         run: |
-            mkdir ./pci/views/js/pciCreator/ibTaoEmbedded/runtime/assets/ee
+            mkdir -p ./pci/views/js/pciCreator/ibTaoEmbedded/runtime/assets/ee
             cp -a ./ee/ee/build/. ./pci/views/js/pciCreator/ibTaoEmbedded/runtime/assets/ee          
       - name: build pci
         run: |
