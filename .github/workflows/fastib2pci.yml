@@ -86,7 +86,9 @@ jobs:
            sed -i 's@/ee4pci/@./@' ./ee/ee/package.json
            cd ee/ee && npm run build
       - name: copy ee build to pci assets
-        run: cp -a ./ee/ee/build/. ./pci/views/js/pciCreator/ibTaoEmbedded/runtime/assets/ee          
+        run: |
+            mkdir ./pci/views/js/pciCreator/ibTaoEmbedded/runtime/assets/ee
+            cp -a ./ee/ee/build/. ./pci/views/js/pciCreator/ibTaoEmbedded/runtime/assets/ee          
       - name: build pci
         run: |
            export REPONAME="${GITHUB_REPOSITORY#*/}"
