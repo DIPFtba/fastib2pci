@@ -51,6 +51,7 @@ jobs:
           artifacts: ${{github.workspace}}/ibTaoConnector.zip
           replacesArtifacts: false
           token: "${{ secrets.GITHUB_TOKEN }}"
+          tag: "latest"
           allowUpdates: true
       - name: Deploy EE to gh-pages
         uses: s0/git-publish-subdir-action@develop
@@ -101,4 +102,5 @@ jobs:
           artifacts: ${{github.workspace}}/ibTaoEmbedded.zip
           replacesArtifacts: false
           token: "${{ secrets.GITHUB_TOKEN }}"
+          tag: "latest"
           allowUpdates: true
