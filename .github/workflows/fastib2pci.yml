@@ -62,9 +62,7 @@ jobs:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             
   embedded_pci:
-    runs-on: ubuntu-latest
-    env:
-      GENERATE_SOURCEMAP: false    
+    runs-on: ubuntu-latest   
     steps:
       - name: install nodejs
         uses: actions/setup-node@v3
@@ -80,7 +78,6 @@ jobs:
         run: git clone https://github.com/quark-s/oat-ibtaoembedded.git ./pci			
       - name: setup & build ee
         run: |
-           source ./ee/ee/.env
            rm -r ./ee/ee/public/items/*
            cp -a ./items/items/. ./ee/ee/public/items/
            echo `ls ./ee/ee/public/items/` && echo `ls ./items/items/`
@@ -88,6 +85,7 @@ jobs:
            export REPONAME="${GITHUB_REPOSITORY#*/}"
            sed -i 's@/ee4pci/@./@' ./ee/ee/package.json
            cd ee/ee && npm run build
+           find ./build/ -name *.map -exec rm {} \;
       - name: copy ee build to pci assets
         run: |
             mkdir -p ./pci/views/js/pciCreator/ibTaoEmbedded/runtime/assets/ee
