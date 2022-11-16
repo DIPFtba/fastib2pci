@@ -53,14 +53,6 @@ jobs:
            cd ./pci_ims/scripts/packer
            npm i           
            node ./index.js -u "https://$GITHUB_REPOSITORY_OWNER.github.io/$REPONAME" -i "$GITHUB_WORKSPACE/items/items" -o "$GITHUB_WORKSPACE"        
-      - name: release pci packages
-        uses: ncipollo/release-action@v1
-        with:
-          artifacts: ${{github.workspace}}/ibTaoGeneric.zip, ${{github.workspace}}/ibTaoGenericIMS.zip
-          replacesArtifacts: true
-          token: "${{ secrets.GITHUB_TOKEN }}"
-          tag: "latest"
-          allowUpdates: true
       - name: Deploy EE to gh-pages
         uses: s0/git-publish-subdir-action@develop
         env:
@@ -68,6 +60,19 @@ jobs:
             BRANCH: gh-pages
             FOLDER: public
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: take a screenshot
+        run: | 
+          npm install -D @playwright/test
+          npx playwright install --with-deps
+          npx playwright screenshot --wait-for-timeout 2000 --viewport-size 1024,768 "https://$GITHUB_REPOSITORY_OWNER.github.io/$REPONAME" screenshot.png
+      - name: release pci packages
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: ${{github.workspace}}/ibTaoGeneric.zip, ${{github.workspace}}/ibTaoGenericIMS.zip, ${{github.workspace}}/screenshot.png
+          replacesArtifacts: true
+          token: "${{ secrets.GITHUB_TOKEN }}"
+          tag: "latest"
+          allowUpdates: true          
             
   embedded_pci:
     runs-on: ubuntu-latest   
