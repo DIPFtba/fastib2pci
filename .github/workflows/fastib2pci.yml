@@ -61,7 +61,8 @@ jobs:
             FOLDER: public
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: take a screenshot
-        run: | 
+        run: |
+          export REPONAME="${GITHUB_REPOSITORY#*/}"
           npm install -D @playwright/test
           npx playwright install --with-deps
           npx playwright screenshot --wait-for-timeout 2000 --viewport-size 1024,768 "https://$GITHUB_REPOSITORY_OWNER.github.io/$REPONAME" screenshot.png
