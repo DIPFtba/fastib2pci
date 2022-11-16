@@ -4,7 +4,7 @@ on:
     branches:
       - main
 jobs:
-  remote_pci:
+  generic_pci:
     runs-on: ubuntu-latest
     steps:
       - name: install nodejs
@@ -22,8 +22,10 @@ jobs:
         uses: actions/checkout@v3
         with: 
             path: 'items'
-      - name: checkout pci
-        run: git clone https://github.com/DIPFtba/ibTaoPciRemote.git ./pci			
+      - name: checkout pci (tao)
+        run: git clone https://github.com/DIPFtba/ibTaoPciRemote.git ./pci
+      - name: checkout pci (ims)
+        run: git clone -b ims https://github.com/DIPFtba/ibTaoPciRemote.git ./pci_ims	        
       - name: setup & build ee
         run: |
            rm -r ./ee/ee/public/items/*
@@ -37,7 +39,7 @@ jobs:
         run: rm -r ./public/* &&
              cp -a ./ee/ee/build/. ./public/ &&
              echo `ls ./ee/ee/build/items` && echo `ls ./public/items`
-      - name: build pci
+      - name: build pci (tao)
         run: |
            export REPONAME="${GITHUB_REPOSITORY#*/}"
            cd ./pci/scripts/packer
@@ -45,10 +47,16 @@ jobs:
            echo "https://$GITHUB_REPOSITORY_OWNER.github.io/$REPONAME"
            node ./index.js -u "https://$GITHUB_REPOSITORY_OWNER.github.io/$REPONAME" -i "$GITHUB_WORKSPACE/items/items" -o "$GITHUB_WORKSPACE"
            cat ../../views/js/pciCreator/ibTaoConnector/confDefault.json
-      - name: release pci package 1
+      - name: build pci (ims)
+        run: |
+           export REPONAME="${GITHUB_REPOSITORY#*/}"
+           cd ./pci_ims/scripts/packer
+           npm i           
+           node ./index.js -u "https://$GITHUB_REPOSITORY_OWNER.github.io/$REPONAME" -i "$GITHUB_WORKSPACE/items/items" -o "$GITHUB_WORKSPACE"        
+      - name: release pci packages
         uses: ncipollo/release-action@v1
         with:
-          artifacts: ${{github.workspace}}/ibTaoConnector.zip
+          artifacts: ${{github.workspace}}/ibTaoGeneric.zip, ${{github.workspace}}/ibTaoGenericIMS.zip
           replacesArtifacts: true
           token: "${{ secrets.GITHUB_TOKEN }}"
           tag: "latest"
