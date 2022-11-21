@@ -114,7 +114,7 @@ jobs:
       - name: release pci package 2
         uses: ncipollo/release-action@v1
         with:
-          artifacts: ${{github.workspace}}/ibTaoEmbedded.zip
+          artifacts: ${{github.workspace}}/ibTaoSpecific.zip
           replacesArtifacts: true
           token: "${{ secrets.GITHUB_TOKEN }}"
           tag: "latest"
