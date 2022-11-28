@@ -1,0 +1,53 @@
+name: csv2datasets
+on: [workflow_dispatch]
+     
+jobs:
+  process_data:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Data
+      uses: actions/checkout@v3
+      with: 
+        ref: 'data-processing'
+      
+    - name: List Data
+      run: |                  
+         echo `ls $GITHUB_WORKSPACE/in/`
+         echo `ls $GITHUB_WORKSPACE/out/`
+         
+    - name: Checkout LogFSM 
+      run: git clone https://github.com/kroehne/LogFSM.git ./logfsm
+ 
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '3.1.100' 
+      
+    - name: Build LogFSM
+      run: dotnet build logfsm/vs/LogFSMCore.sln -c "Release LogFSM" 
+      
+    - name: Prepare Out Folder
+      run: |
+        mkdir $GITHUB_WORKSPACE/_tmp/
+        mkdir $GITHUB_WORKSPACE/_tmp/in
+        mkdir $GITHUB_WORKSPACE/_tmp/out 
+      
+    - name: Publish Linux
+      run: dotnet publish logfsm/vs/LogFSMCore.sln -c "Release LogFSM" -r ubuntu.16.10-x64 -o "$GITHUB_WORKSPACE/_tmp"
+            
+    - name: Process Data 
+      run: |
+         cp -a ./in/. $GITHUB_WORKSPACE/_tmp/in
+         echo `ls $GITHUB_WORKSPACE/_tmp/` 
+         echo `ls $GITHUB_WORKSPACE/_tmp/in/` 
+         echo `ls $GITHUB_WORKSPACE/_tmp/out/` 
+         $GITHUB_WORKSPACE/_tmp/TransformToUniversalLogFormat -i $GITHUB_WORKSPACE/_tmp/in/ -z $GITHUB_WORKSPACE/_tmp/out/zcsv.zip -x $GITHUB_WORKSPACE/_tmp/out/xes.zip -r taopci01a -v -f SERIALIZERAWXMLZIP
+         echo `ls $GITHUB_WORKSPACE/_tmp/out/` 
+         cp -a $GITHUB_WORKSPACE/_tmp/out/. ./out/
+         rm -r $GITHUB_WORKSPACE/_tmp/
+         rm -r $GITHUB_WORKSPACE/logfsm/
+         
+    - uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: Processed data using 'TransformToUniversalLogFormat' from LogFSM (https://github.com/kroehne/LogFSM)
