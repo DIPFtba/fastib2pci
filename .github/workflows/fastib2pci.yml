@@ -44,13 +44,13 @@ jobs:
            export REPONAME="${GITHUB_REPOSITORY#*/}"
            cd ./pci/scripts/packer
            npm i           
-           node ./index.js -u "https://$GITHUB_REPOSITORY_OWNER.github.io/$REPONAME" -i "$GITHUB_WORKSPACE/items/items" -l "PCI_IB-GENERIC_OAT_$REPONAME_$(date '+%D-%H:%M') -o "$GITHUB_WORKSPACE"
+           node ./index.js -u "https://$GITHUB_REPOSITORY_OWNER.github.io/$REPONAME" -i "$GITHUB_WORKSPACE/items/items" -l "PCI_IB-GENERIC_OAT_${REPONAME}_$(date '+%D-%H:%M') -o "$GITHUB_WORKSPACE"
       - name: build pci (ims)
         run: |
            export REPONAME="${GITHUB_REPOSITORY#*/}"
            cd ./pci_ims/scripts/packer
            npm i           
-           node ./index.js -u "https://$GITHUB_REPOSITORY_OWNER.github.io/$REPONAME" -i "$GITHUB_WORKSPACE/items/items" -l "PCI_IB-GENERIC_IMS_$REPONAME_$(date '+%D-%H:%M')" -o "$GITHUB_WORKSPACE"        
+           node ./index.js -u "https://$GITHUB_REPOSITORY_OWNER.github.io/$REPONAME" -i "$GITHUB_WORKSPACE/items/items" -l "PCI_IB-GENERIC_IMS_${REPONAME}E_$(date '+%D-%H:%M')" -o "$GITHUB_WORKSPACE"        
       - name: Deploy EE to gh-pages
         uses: s0/git-publish-subdir-action@develop
         env:
@@ -103,6 +103,7 @@ jobs:
       - name: copy ee build to pci assets
         run: |
             mkdir -p ./pci/views/js/pciCreator/ibTaoEmbedded/runtime/assets/ee
+            mkdir -p ./pci_ims/views/js/pciCreator/ibTaoConnector/runtime/assets/ee
             cp -a ./ee/ee/build/. ./pci/views/js/pciCreator/ibTaoEmbedded/runtime/assets/ee
             cp -a ./ee/ee/build/. ./pci_ims/views/js/pciCreator/ibTaoConnector/runtime/assets/ee
       - name: build pci (tao)
@@ -110,13 +111,13 @@ jobs:
            export REPONAME="${GITHUB_REPOSITORY#*/}"
            cd ./pci/scripts/packer
            npm i           
-           node ./index.js -i "$GITHUB_WORKSPACE/items/items" -l "PCI_IB-SPECIFIC_OAT_$REPONAME_$(date '+%D-%H:%M')" -o "$GITHUB_WORKSPACE"
+           node ./index.js -i "$GITHUB_WORKSPACE/items/items" -l "PCI_IB-SPECIFIC_OAT_${REPONAME}_$(date '+%D-%H:%M')" -o "$GITHUB_WORKSPACE"
       - name: build pci (ims)
         run: |
            export REPONAME="${GITHUB_REPOSITORY#*/}"
            cd ./pci_ims/scripts/packer
            npm i           
-           node ./index.js -i "$GITHUB_WORKSPACE/items/items" -l "PCI_IB-SPECIFIC_IMS_$REPONAME_$(date '+%D-%H:%M')" -o "$GITHUB_WORKSPACE"           
+           node ./index.js -i "$GITHUB_WORKSPACE/items/items" -l "PCI_IB-SPECIFIC_IMS_${REPONAME}_$(date '+%D-%H:%M')" -o "$GITHUB_WORKSPACE"           
       - name: release pci package 2
         uses: ncipollo/release-action@v1
         with:
