@@ -44,7 +44,7 @@ jobs:
            export REPONAME="${GITHUB_REPOSITORY#*/}"
            cd ./pci/scripts/packer
            npm i           
-           node ./index.js -u "https://$GITHUB_REPOSITORY_OWNER.github.io/$REPONAME" -i "$GITHUB_WORKSPACE/items/items" -l "PCI_IB-GENERIC_OAT_${REPONAME}_$(date '+%D-%H:%M') -o "$GITHUB_WORKSPACE"
+           node ./index.js -u "https://$GITHUB_REPOSITORY_OWNER.github.io/$REPONAME" -i "$GITHUB_WORKSPACE/items/items" -l "PCI_IB-GENERIC_OAT_${REPONAME}_$(date '+%D-%H:%M')" -o "$GITHUB_WORKSPACE"
       - name: build pci (ims)
         run: |
            export REPONAME="${GITHUB_REPOSITORY#*/}"
