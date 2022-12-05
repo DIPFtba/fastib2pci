@@ -11,7 +11,8 @@
     },
     "players": [
         { "playerId": "A", "runtimeVersion": "9.8.0", "frameContentFile": "frameContent_9_8.html" }, 
-        { "playerId": "B", "runtimeVersion": "9.7.0", "frameContentFile": "frameContent_9_7.html" }
+        { "playerId": "B", "runtimeVersion": "9.7.0", "frameContentFile": "frameContent_9_7.html" },
+        { "playerId": "C", "runtimeVersion": "9.6.0", "frameContentFile": "frameContent_9_6.html" } 
     ],
     "showPlayerInfo": false
 }
