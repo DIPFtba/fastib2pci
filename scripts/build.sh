@@ -54,7 +54,7 @@ build_pci(){
 #REPONAME="fastib2pci"
 #GITHUB_REPOSITORY_OWNER="DIPFtba"
 
-if [ $(find ./items/* -maxdepth 0 -type d -printf . | wc -c) -ge "1" ]; then
+if [ $(find ./items/items/* -maxdepth 0 -type d -printf . | wc -c) -ge "1" ]; then
 for i in $( ls -d items/*/ )
 	do
 		build_pci $i
