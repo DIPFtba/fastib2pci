@@ -21,7 +21,7 @@ jobs:
       - name: checkout items
         uses: actions/checkout@v3
         with: 
-            path: 'items'
+            path: './'
       - name: checkout generic pci (tao)
         run: git clone https://github.com/DIPFtba/ibTaoPciRemote.git ./pci_generic_tao
       - name: checkout generic pci (ims)
