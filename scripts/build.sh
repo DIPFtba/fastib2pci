@@ -1,7 +1,7 @@
 #!/bin/bash
 
 build_pci(){
-	PATH = $1
+	export PATH = $1
 	if ! [ -d $PATH ]; then
 		return 0
 	fi
@@ -9,7 +9,7 @@ build_pci(){
 		return 0
 	fi
 	#GITHUB_WORKSPACE=$(pwd)
-	FOLDER=${PWD##*/}
+	export FOLDER=${PWD##*/}
 	rm -r ./ee/ee/public/items/*
 	cp -a ${PATH}. ./ee/ee/public/items/
 	# npm install --prefix ./ee/ee
