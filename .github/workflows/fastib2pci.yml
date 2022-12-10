@@ -13,11 +13,6 @@ jobs:
           node-version: '16.10.0'
       - name: checkout ee
         run: git clone https://github.com/DIPFtba/ee4pci.git ./ee
-      - name: checkout pages
-        uses: actions/checkout@v3
-        with: 
-            ref: 'gh-pages'
-            path: 'public'
       - name: checkout items
         uses: actions/checkout@v3
         with: 
@@ -29,14 +24,14 @@ jobs:
       - name: checkout specific pci (tao)
         run: git clone https://github.com/quark-s/oat-ibtaoembedded.git ./pci_specific_tao
       - name: checkout specific pci (ims)
-        run: git clone -b ims https://github.com/quark-s/oat-ibtaoembedded.git ./pci_specific_ims        
+        run: git clone -b ims https://github.com/quark-s/oat-ibtaoembedded.git ./pci_specific_ims
       - name: setup ee
         run: |
             npm install --prefix ./ee/ee
       - name: run build script
         run: |
             export REPONAME="${GITHUB_REPOSITORY#*/}"
-            rm -r ./public/*
+            mkdir ./public
             chmod +x ./items/scripts/build.sh
             ./items/scripts/build.sh
       - name: Deploy EE to gh-pages
@@ -49,10 +44,10 @@ jobs:
       - name: release pci packages
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "*.tar"
+          artifacts: ${{github.workspace}}/*.tar
           replacesArtifacts: true
+          removeArtifacts: true
           token: "${{ secrets.GITHUB_TOKEN }}"
           tag: "latest"
-          allowUpdates: true          
-            
-  
+          allowUpdates: true
+          
