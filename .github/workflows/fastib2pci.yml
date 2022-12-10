@@ -37,7 +37,7 @@ jobs:
         run: |
             export REPONAME="${GITHUB_REPOSITORY#*/}"
             rm -r ./public/*
-            ./scripts/build.sh
+            ./items/scripts/build.sh
       - name: Deploy EE to gh-pages
         uses: s0/git-publish-subdir-action@develop
         env:
