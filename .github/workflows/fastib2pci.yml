@@ -24,7 +24,7 @@ jobs:
       - name: checkout specific pci (tao)
         run: git clone https://github.com/quark-s/oat-ibtaoembedded.git ./pci_specific_tao
       - name: checkout specific pci (ims)
-        run: git clone -b ims https://github.com/quark-s/oat-ibtaoembedded.git ./pci_specific_ims
+        run: git clone -b ims https://github.com/quark-s/oat-ibtaoembedded.git ./pci_specific_ims        
       - name: setup ee
         run: |
             npm install --prefix ./ee/ee
@@ -32,6 +32,10 @@ jobs:
         run: |
             export REPONAME="${GITHUB_REPOSITORY#*/}"
             mkdir ./public
+            npm install -D @playwright/test
+            npx playwright install --with-deps
+            npm install -g live-server
+            npm install ejs
             chmod +x ./items/scripts/build.sh
             ./items/scripts/build.sh
       - name: Deploy EE to gh-pages
@@ -49,5 +53,6 @@ jobs:
           removeArtifacts: true
           token: "${{ secrets.GITHUB_TOKEN }}"
           tag: "latest"
-          allowUpdates: true
-          
+          allowUpdates: true          
+            
+  
