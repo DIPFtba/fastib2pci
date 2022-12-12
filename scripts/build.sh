@@ -59,16 +59,17 @@ build_test(){
 		return 1
 }
 
-live-server --open="./public/" --proxy=/${REPONAME}:http://127.0.0.1:8080/public --no-browser &
-
-export i=0
-echo -n '{"tests": [' > data.json
 if [ $(find ./items/items/* -maxdepth 0 -type d -printf . | wc -c) -ge "1" ]; then
+	live-server --open="./public/" --proxy=/${REPONAME}:http://127.0.0.1:8080/public --no-browser &
+	export i=0
+	echo -n '{"tests": [' > data.json
+
 	for IPATH in $( ls -d items/items/*/ )
 	do
 		build_test
 	done
+
+	echo -n ']}' >> data.json
+	npx ejs ./items/scripts/index.ejs -f ./data.json -o ./public/index.html
+	cp ./data.json ./public/
 fi
-echo -n ']}' >> data.json
-npx ejs ./items/scripts/index.ejs -f ./data.json -o ./public/index.html
-cp ./data.json ./public/
