@@ -53,6 +53,5 @@ jobs:
           removeArtifacts: true
           token: "${{ secrets.GITHUB_TOKEN }}"
           tag: "latest"
-          allowUpdates: true          
-            
-  
+          allowUpdates: true
+
