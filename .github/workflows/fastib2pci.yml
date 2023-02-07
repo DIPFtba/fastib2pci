@@ -4,7 +4,7 @@ on:
     branches:
       - main
 permissions:
-  contents: read/write
+  contents: read,write
 jobs:
   pci:
     runs-on: ubuntu-latest
