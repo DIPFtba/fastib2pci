@@ -5,14 +5,11 @@
             "httpTimeout": 10000
         },
     "mathJaxCdnUrl": "math-jax unknown",
-    "itemSize": {
-        "height": 768,
-        "width": 1024
-    },
     "players": [
-        { "playerId": "A", "runtimeVersion": "9.8.0", "frameContentFile": "frameContent_9_8.html" }, 
-        { "playerId": "B", "runtimeVersion": "9.7.0", "frameContentFile": "frameContent_9_7.html" },
-        { "playerId": "C", "runtimeVersion": "9.6.0", "frameContentFile": "frameContent_9_6.html" } 
+        { "playerId": "A", "runtimeVersion": "9.9.0", "frameContentFile": "frameContent_9_9.html" }, 
+        { "playerId": "B", "runtimeVersion": "9.8.0", "frameContentFile": "frameContent_9_8.html" },
+        { "playerId": "C", "runtimeVersion": "9.7.0", "frameContentFile": "frameContent_9_7.html" },
+        { "playerId": "D", "runtimeVersion": "9.6.0", "frameContentFile": "frameContent_9_6.html" } 
     ],
     "showPlayerInfo": false
 }
