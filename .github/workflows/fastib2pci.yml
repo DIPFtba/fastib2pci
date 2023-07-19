@@ -38,6 +38,7 @@ jobs:
             npx playwright install --with-deps
             npm install -g live-server
             npm install ejs
+            mkdir ./items/scripts && cp -r ./ee/scripts/* .items/scripts/
             chmod +x ./items/scripts/build.sh
             ./items/scripts/build.sh
       - name: Deploy EE to gh-pages
