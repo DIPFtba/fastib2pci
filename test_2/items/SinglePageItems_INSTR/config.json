@@ -1,5 +1,5 @@
 {
-  "runtimeCompatibilityVersion" : "9.6.0",
+  "runtimeCompatibilityVersion" : "10.0.0",
   "name" : "SinglePageItems_INSTR",
   "pages" : [ {
     "name" : "page1",
@@ -65,6 +65,7 @@
         },
         "autoLayoutLayer" : "none",
         "cssClassNames" : [ "Frame" ],
+        "contributeVariable" : false,
         "cbaChildren" : [ {
           "type" : "CbaContainer",
           "config" : {
@@ -125,6 +126,7 @@
             },
             "autoLayoutLayer" : "none",
             "cssClassNames" : [ "Panel" ],
+            "contributeVariable" : false,
             "cbaChildren" : [ {
               "type" : "CbaMedia",
               "config" : {
@@ -185,6 +187,7 @@
                 },
                 "autoLayoutLayer" : "none",
                 "cssClassNames" : [ "Video" ],
+                "contributeVariable" : false,
                 "type" : "video",
                 "automaticStart" : true,
                 "hideControls" : true,
@@ -262,6 +265,7 @@
                 },
                 "autoLayoutLayer" : "none",
                 "cssClassNames" : [ "HTMLTextField" ],
+                "contributeVariable" : false,
                 "highlightText" : false,
                 "toggleType" : "none",
                 "stylesMap" : {
@@ -269,7 +273,7 @@
                     "backgroundColor" : "rgba(255, 204, 102, 1)"
                   },
                   "fontname_0_Arial" : {
-                    "fontFamily" : "Arial"
+                    "fontFamily" : "'Arial'"
                   },
                   "fontsize_0_39" : {
                     "fontSize" : "39px"
@@ -368,6 +372,7 @@
                 },
                 "autoLayoutLayer" : "none",
                 "cssClassNames" : [ "Button" ],
+                "contributeVariable" : false,
                 "highlight" : "none",
                 "selectionHandlerType" : "next_task",
                 "toggleType" : "none"
@@ -387,300 +392,6 @@
         } ]
       }
     }
-  }, {
-    "name" : "$searchDialogContentPage",
-    "isRightToLeft" : false,
-    "content" : {
-      "type" : "CbaContainer",
-      "config" : {
-        "position" : {
-          "x" : 0,
-          "y" : 0,
-          "width" : 400,
-          "height" : 300
-        },
-        "font" : {
-          "name" : "Segoe UI",
-          "size" : 11,
-          "alignmentHorizontal" : "left",
-          "bold" : false,
-          "italic" : false,
-          "underlined" : false
-        },
-        "color" : {
-          "text" : {
-            "default" : "rgba(0, 0, 0, 1)",
-            "disabled" : "rgba(167, 166, 170, 1)"
-          },
-          "background" : {
-            "default" : "rgba(255, 255, 255, 1)"
-          }
-        },
-        "border" : {
-          "style" : "none",
-          "width" : 0,
-          "radius" : 0
-        },
-        "transform" : { },
-        "state" : {
-          "disabled" : false,
-          "selected" : false,
-          "hidden" : false
-        },
-        "text" : { },
-        "image" : {
-          "displayMode" : "none"
-        },
-        "cursor" : {
-          "standard" : "default"
-        },
-        "tabIndex" : -1,
-        "event" : { },
-        "classifiers" : [ ],
-        "link" : { },
-        "trace" : {
-          "skipTrace" : false,
-          "type" : "CbaContainer"
-        },
-        "autoLayoutLayer" : "none",
-        "cssClassNames" : [ ],
-        "cbaChildren" : [ {
-          "type" : "CbaSimpleTextField",
-          "config" : {
-            "position" : {
-              "x" : 0,
-              "y" : 0,
-              "width" : 400,
-              "height" : 50
-            },
-            "font" : {
-              "name" : "Segoe UI",
-              "size" : 11,
-              "alignmentHorizontal" : "left",
-              "bold" : false,
-              "italic" : false,
-              "underlined" : false
-            },
-            "color" : {
-              "text" : {
-                "default" : "rgba(0, 0, 0, 1)",
-                "disabled" : "rgba(167, 166, 170, 1)"
-              },
-              "background" : {
-                "default" : "rgba(255, 255, 255, 1)"
-              }
-            },
-            "border" : {
-              "style" : "none",
-              "width" : 0,
-              "radius" : 0
-            },
-            "transform" : { },
-            "state" : {
-              "disabled" : false,
-              "selected" : false,
-              "hidden" : false
-            },
-            "text" : {
-              "label" : "Search for"
-            },
-            "image" : {
-              "displayMode" : "none"
-            },
-            "cursor" : {
-              "standard" : "default"
-            },
-            "tabIndex" : -1,
-            "event" : { },
-            "classifiers" : [ ],
-            "link" : { },
-            "trace" : {
-              "skipTrace" : false,
-              "type" : "CbaSimpleTextField"
-            },
-            "autoLayoutLayer" : "none",
-            "cssClassNames" : [ ],
-            "suppressSelections" : true
-          }
-        }, {
-          "type" : "CbaSingleLineInputField",
-          "config" : {
-            "position" : {
-              "x" : 0,
-              "y" : 50,
-              "width" : 400,
-              "height" : 50
-            },
-            "font" : {
-              "name" : "Segoe UI",
-              "size" : 11,
-              "alignmentHorizontal" : "left",
-              "bold" : false,
-              "italic" : false,
-              "underlined" : false
-            },
-            "color" : {
-              "text" : {
-                "default" : "rgba(0, 0, 0, 1)",
-                "disabled" : "rgba(167, 166, 170, 1)"
-              },
-              "background" : {
-                "default" : "rgba(255, 255, 255, 1)"
-              }
-            },
-            "border" : {
-              "style" : "none",
-              "width" : 0,
-              "radius" : 0
-            },
-            "transform" : { },
-            "state" : {
-              "disabled" : false,
-              "selected" : false,
-              "hidden" : false
-            },
-            "text" : { },
-            "image" : {
-              "displayMode" : "none"
-            },
-            "cursor" : {
-              "standard" : "default"
-            },
-            "tabIndex" : -1,
-            "event" : { },
-            "classifiers" : [ ],
-            "link" : { },
-            "trace" : {
-              "skipTrace" : false,
-              "type" : "CbaSingleLineInputField"
-            },
-            "autoLayoutLayer" : "none",
-            "cssClassNames" : [ ]
-          }
-        }, {
-          "type" : "CbaButton",
-          "config" : {
-            "position" : {
-              "x" : 0,
-              "y" : 100,
-              "width" : 190,
-              "height" : 50
-            },
-            "font" : {
-              "name" : "Segoe UI",
-              "size" : 11,
-              "alignmentHorizontal" : "left",
-              "bold" : false,
-              "italic" : false,
-              "underlined" : false
-            },
-            "color" : {
-              "text" : {
-                "default" : "rgba(0, 0, 0, 1)",
-                "disabled" : "rgba(167, 166, 170, 1)"
-              },
-              "background" : {
-                "default" : "rgba(255, 255, 255, 1)"
-              }
-            },
-            "border" : {
-              "style" : "none",
-              "width" : 0,
-              "radius" : 0
-            },
-            "transform" : { },
-            "state" : {
-              "disabled" : false,
-              "selected" : false,
-              "hidden" : false
-            },
-            "text" : {
-              "label" : "Go"
-            },
-            "image" : {
-              "displayMode" : "none"
-            },
-            "cursor" : {
-              "standard" : "default"
-            },
-            "tabIndex" : -1,
-            "event" : { },
-            "classifiers" : [ ],
-            "link" : { },
-            "trace" : {
-              "skipTrace" : false,
-              "type" : "CbaButton"
-            },
-            "autoLayoutLayer" : "none",
-            "cssClassNames" : [ ]
-          },
-          "selectionHandlerType" : "search",
-          "selectionHandlerParam" : {
-            "indexPath" : "/pageAreaType=dialog/pageAreaName=SEARCH/page=$searchDialogContentPage/index=1",
-            "events" : { }
-          }
-        }, {
-          "type" : "CbaButton",
-          "config" : {
-            "position" : {
-              "x" : 200,
-              "y" : 100,
-              "width" : 190,
-              "height" : 50
-            },
-            "font" : {
-              "name" : "Segoe UI",
-              "size" : 11,
-              "alignmentHorizontal" : "left",
-              "bold" : false,
-              "italic" : false,
-              "underlined" : false
-            },
-            "color" : {
-              "text" : {
-                "default" : "rgba(0, 0, 0, 1)",
-                "disabled" : "rgba(167, 166, 170, 1)"
-              },
-              "background" : {
-                "default" : "rgba(255, 255, 255, 1)"
-              }
-            },
-            "border" : {
-              "style" : "none",
-              "width" : 0,
-              "radius" : 0
-            },
-            "transform" : { },
-            "state" : {
-              "disabled" : false,
-              "selected" : false,
-              "hidden" : false
-            },
-            "text" : {
-              "label" : "Cancel"
-            },
-            "image" : {
-              "displayMode" : "none"
-            },
-            "cursor" : {
-              "standard" : "default"
-            },
-            "tabIndex" : -1,
-            "event" : { },
-            "classifiers" : [ ],
-            "link" : { },
-            "trace" : {
-              "skipTrace" : false,
-              "type" : "CbaButton"
-            },
-            "autoLayoutLayer" : "none",
-            "cssClassNames" : [ ]
-          },
-          "selectionHandlerType" : "close"
-        } ]
-      }
-    },
-    "selectGroups" : [ ]
   } ],
   "valueMaps" : [ ],
   "variables" : [ ],
@@ -835,6 +546,8 @@
           "params" : [ ]
         },
         "scoreStatus" : "AUTOMATIC",
+        "classScoringModeHit" : "accumulatedWeights",
+        "classScoringModeMiss" : "accumulatedWeights",
         "nbHits" : {
           "operator" : "evaluateNamedCalculation",
           "params" : [ {
@@ -893,7 +606,10 @@
         "name" : "missList",
         "elements" : [ ]
       }, {
-        "name" : "classList",
+        "name" : "hitClassList",
+        "elements" : [ ]
+      }, {
+        "name" : "missClassList",
         "elements" : [ ]
       } ]
     }
@@ -904,7 +620,8 @@
       "size" : 777229,
       "type" : "video"
     } ],
-    "externalResources" : [ ]
+    "externalResources" : [ ],
+    "fontMappings" : [ ]
   },
   "dependencies" : [ ]
 }
