@@ -6,7 +6,8 @@
         },
     "mathJaxCdnUrl": "math-jax unknown",
     "players": [
-        { "playerId": "A", "runtimeVersion": "10.0.0", "frameContentFile": "frameContent_10_0.html" }
+        { "playerId": "A", "runtimeVersion": "10.0.0", "frameContentFile": "frameContent_10_0.html" },
+        { "playerId": "B", "runtimeVersion": "9.6.0", "frameContentFile": "frameContent_9_6.html" }
     ],
     "showPlayerInfo": false
 }
